@@ -1,0 +1,56 @@
+ryant@localhost:~/tasks$ tree -a /opt/testdirs/
+/opt/testdirs/
+├── crash.dump
+└── test
+    ├── baz
+    │   ├── apache
+    │   │   ├── apache_combined.log
+    │   │   ├── apache_common.log
+    │   │   ├── apache_error.log
+    │   │   └── .prune-enable
+    │   ├── comanche
+    │   │   ├── crash.dump
+    │   │   └── .prune-enable
+    │   ├── crash.dump
+    │   └── sioux
+    │       └── banshees
+    │           └── .prune-enable
+    └── foo
+        ├── bar
+        ├── eccles
+        │   ├── auth
+        │   ├── bloodknock
+        │   │   ├── crash.dump
+        │   │   ├── .prune-enable
+        │   │   └── rfc3164-2.log
+        │   ├── crash.dump
+        │   ├── domain
+        │   ├── domain.txt
+        │   ├── .prune-enable
+        │   ├── qwerty.gz
+        │   └── rfc3164-3.log
+        ├── .prune-enable
+        ├── rfc3164-1.log
+        └── syslog
+
+10 directories, 22 files
+
+ryant@localhost:~/tasks$ ./opt_whack.sh
+/opt/testdirs/test/foo/rfc3164-1.log=1332:11203
+removed '/opt/testdirs/test/foo/eccles/crash.dump'
+/opt/testdirs/test/foo/eccles/rfc3164-3.log=256:2120
+removed '/opt/testdirs/test/foo/eccles/bloodknock/crash.dump'
+/opt/testdirs/test/foo/eccles/bloodknock/rfc3164-2.log=13304:112030 ...truncating
+removed '/opt/testdirs/test/baz/comanche/crash.dump'
+/opt/testdirs/test/baz/apache/apache_combined.log=264:1000
+/opt/testdirs/test/baz/apache/apache_common.log=5096:50000 ...truncating
+/opt/testdirs/test/baz/apache/apache_error.log=1828:11203
+
+ryant@localhost:~/tasks$ ./opt_whack.sh
+/opt/testdirs/test/foo/rfc3164-1.log=1332:11203
+/opt/testdirs/test/foo/eccles/rfc3164-3.log=256:2120
+/opt/testdirs/test/foo/eccles/bloodknock/rfc3164-2.log=2376:20000
+/opt/testdirs/test/baz/apache/apache_combined.log=264:1000
+/opt/testdirs/test/baz/apache/apache_common.log=2040:20000
+/opt/testdirs/test/baz/apache/apache_error.log=1828:11203
+ryant@localhost:~/tasks$

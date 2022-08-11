@@ -1,0 +1,14 @@
+ryant@localhost:~/tasks/2$ curl -s https://hiredgnu.net/example.json
+[
+ {"id":123,"name":"Jerks","rating":"14","year":2019,"plus_only":false},
+ {"id":124,"name":"Jerks 2","rating":"19","year":2019,"plus_only":true},
+ {"id":125,"name":"Jerks 3","rating":"12","year":2019,"plus_only":false},
+ {"id":126,"name":"Jerks 4","rating":"16","year":2019,"plus_only":false},
+ {"id":127,"name":"Jerks 5","rating":"14","year":2019,"plus_only":true},
+ {"id":128,"name":"Jerks 6","rating":"14","year":2019,"plus_only":true}
+]
+
+ryant@localhost:~/tasks/2$ ./movie_api_parser.py
+Jerks 5
+Jerks 6
+Total programs found: 6, Total programs matching criteria: 2
